@@ -7,6 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
+import Edit from './components/edit';
 
 import {
   BrowserRouter as Router,
@@ -20,24 +21,28 @@ class App extends Component {
   render() {
     return (
       <Router>
-      <div className="App">
-        <Navbar bg="primary" variant="dark">
-          <Container>
-            <Navbar.Brand href="/">Navbar</Navbar.Brand>
-            <Nav className="me-auto">
-              <Nav.Link href="/">Home</Nav.Link>
-              <Nav.Link href="/read">Read</Nav.Link>
-              <Nav.Link href="/create">Create</Nav.Link>
-            </Nav>
-          </Container>
-        </Navbar>
-        <Switch>
-          <Route path="/" exact><Content /></Route>
-          <Route path="/create"><Create></Create></Route>
-          <Route path="/read"><Read></Read></Route>
-        </Switch>
-      </div>
+        <div className="App">
+          <Navbar bg="primary" variant="dark">
+            <Container>
+              <Navbar.Brand href="/">Navbar</Navbar.Brand>
+              <Nav className="me-auto">
+                <Nav.Link href="/">Home</Nav.Link>
+                <Nav.Link href="/read">Read</Nav.Link>
+                <Nav.Link href="/create">Create</Nav.Link>
+              </Nav>
+            </Container>
+          </Navbar>
+          <Switch>
+            <Route path="/" exact><Content /></Route>
+            <Route path="/create"><Create></Create></Route>
+            <Route path="/read"><Read></Read></Route>
+            <Route path='/edit/:id' component={Edit}></Route>
+          </Switch>
+        </div>
       </Router>
+      /* ************************************************************************
+        ABOVE: Adding new url path for unique movie by its ID.
+      * ************************************************************************/
     );
   }
 }
